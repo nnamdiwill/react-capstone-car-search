@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    /*The box-sizing property is used to tell the browser what the sizing properties (width and height) should include border-box.*/
+    box-sizing: border-box;
+    /*reset Chrome user agent styles*/
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-before: 0px;
+    -webkit-padding-after: 0px;
+    -webkit-padding-start: 0px;
+    -webkit-padding-end: 0px;
+}
+
+html{
+    background-image: url( "/images/ferrari");
+     background-repeat: no-repeat;
+    background-size: cover;
+}
+div{
+    font-size: small;
+    text-align: center;
+    color: green;
+    margin-top: 1px;
+}
+#modelResults {
+    width:80%;
+    margin: 0 auto;
+    border:1px solid red;
+}
+#modelResults li { 
+    width:25%;
+    padding: 20px;
+    display: inline-block;
+}
+#modelResults li img{ 
+    width:100%;
+}
+#modelResults li p{ 
+    text-align: center;
+}
