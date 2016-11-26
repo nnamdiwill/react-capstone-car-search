@@ -19,11 +19,31 @@
         <button class="search-button" id="searchCars">Search</button>
     </section>
 
-    <section>
-        <ul id="modelResults">
-
-        </ul>
+    <section id="gallery">
+        <!--first api call -->
+        <section class="item">
+            <a href="#img1">
+                <img src="img/img1.jpg">
+            </a>
+        </section>
+         <!--first call ends here-->
     </section>
+   
+    <!-- second api call -->
+    <div class="lightbox" id="img1">
+        <div class="box">
+            <a class="close" href="#">X</a>
+            <p class="title">Lorem ipsum dolor sit amet</p>
+            <div class="content">
+                <img src="img/img1.jpg">
+                <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Text Modal Window Nullam at volutpat ipsum. Nullam nec posuere ante. Nulla molestie ac odio sed malesuada.Text Modal Window With a Video Ut dapibus odio eget vestibulum condimentum.</p>
+            </div>
+            <a class="prev" href="#img3">Previous</a>
+            <a class="next" href="#img2">Next</a>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!--Second call ends-->
 
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script src="js/index.js"></script>

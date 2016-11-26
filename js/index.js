@@ -50,11 +50,13 @@
                  .done(function(result) {
                          /* if the results are meeningful, we can just console.log them */
                          console.log(result.models);
-                         $('#modelResults').empty();
+                         $('#gallery').empty();
+                         var carModels = ''; //first api call
                          $.each(result.models, function(i, item) {
-                                 //var carModels = '<li class = "modelRow">' + searchTerm + ' ' + item.name;
-                                 //youtube search
+                                 carModels += '<section class="item">';
+                                 carModels += '<a href="#' + item.id + '">';
 
+                                 //youtube search
                                  $.getJSON("https://www.googleapis.com/youtube/v3/search", {
                                                  "part": "snippet",
                                                  "key": "AIzaSyCclIq-RF7zhCJ_JnoXJBLdGvz-v2nzCB0",
@@ -76,8 +78,8 @@
                                                  console.log(data.items[0].snippet.thumbnails.medium.url);
 
 
-                                                 var carModels = '<li class = "modelRow"><img class = "car-image" src="' + data.items[0].snippet.thumbnails.medium.url + '"/> <p class="caption">' + searchTerm + ' ' + item.name + '</p> </li>';
-                                                 $('#modelResults').append(carModels);
+                                                 var carModels = '<li class = "modelRow"><img src= img/img1.jpg"' + data.items[0].snippet.thumbnails.medium.url + '"/> <p class="caption">' + searchTerm + ' ' + item.name + '</p> </li>';
+                                                 $('#gallery').append(carModels);
                                                  //carModels += '<img src="' + data.items[0].snippet.thumbnails.medium.url + '"/> <br />';
 
                                          }
