@@ -16,12 +16,13 @@ var PopulateDropDown = React.createClass({
 
                 axios.get('https://api.edmunds.com/api/vehicle/v2/makes?fmt=json&api_key=kvytjhenbcuxked2g4r89zm9')
                         .then(function(res) {
+                                console.log(res);
                                 this.setState({
                                         data: res.data
                                 });
                         }).catch(function(error) {
-                                console.log("error", error)
-                        })
+                                console.log("error", error);
+                        });
         },
         render: function() {
 
