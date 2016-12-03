@@ -22,14 +22,19 @@ var PopulateDropDown = React.createClass({
                                 });
                         }).catch(function(error) {
                                 console.log("error", error);
-                        });
+                        })
         },
         render: function() {
 
                 return (
-                        <h1>hello </h1>
+                        <h1>hello </h1> 
+                       <div> {this.state.data} </div>
+ 
+                        
+                       
 
                 );
+
         }
 });
 
@@ -179,4 +184,4 @@ var PopulateDropDown = React.createClass({
 // });
 
 
-        ReactDOM.render(<PopulateDropDown />, document.getElementById('app'));
+ReactDOM.render(<PopulateDropDown />, document.getElementById('app'));
