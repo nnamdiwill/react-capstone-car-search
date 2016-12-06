@@ -5,39 +5,75 @@ var ReactDOM = require('react-dom');
 var axios = require('axios');
 //import {Ajax} from 'react-superagent';
 //import ajax from 'superagent';
+//var $ = require('jquery');
 var PopulateDropDown = React.createClass({
         getInitialState: function() {
                 return {
                         data: []
                 };
         },
-
+        
         componentWillMount: function() {
-
                 axios.get('https://api.edmunds.com/api/vehicle/v2/makes?fmt=json&api_key=kvytjhenbcuxked2g4r89zm9')
                         .then(function(res) {
                                 console.log(res);
                                 this.setState({
                                         data: res.data
                                 });
+                                console.log(res.data);
                         }).catch(function(error) {
                                 console.log("error", error);
                         })
         },
-        render: function() {
+        
+        //  componentWillMount: function(){
+                
+                
+        
+        //  $.ajax({
+        //     url: 'https://api.edmunds.com/api/vehicle/v2/makes?fmt=json&api_key=kvytjhenbcuxked2g4r89zm9',
+        //     method: 'GET',
+        //     success: function(result) {
+        //         this.setState({data: result});
+        //         console.log(result);
 
+        //     }.bind(this)
+
+        // componentWillMount: function() {
+
+                
+        //  });
+        render: function() {
+                
+                        
+                console.log(this.state.data);
                 return (
-                        <h1>hello </h1> 
-                       <div> {this.state.data} </div>
- 
+                        <div className="car-output">
+                        {this.state.data.makes(function(car, index) {
+                                return (
+                                        <li>{car}</li>
+                                )
+                        })}
+                        </div>
+                        
                         
                        
 
                 );
 
         }
+        
+                
+     
+                
+        
+
 });
 
+
+
+        
+        
 
 // function populateDropDown() {
 //         /*

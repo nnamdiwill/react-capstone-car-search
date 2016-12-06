@@ -52,15 +52,15 @@ a {
     color: #FFF;
 }
 
-h1 {
-    margin-top: 100px;
-    text-align: center;
-    font-size: 60px;
-    font-family: 'Bree Serif', 'serif';
-}
+
 
 p {
     text-align: center;
+}
+.car-output{
+    text-align: center;
+    color:green;
+    font-size: 20px;
 }
 
 
