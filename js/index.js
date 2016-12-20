@@ -6,69 +6,120 @@ var axios = require('axios');
 //import {Ajax} from 'react-superagent';
 //import ajax from 'superagent';
 //var $ = require('jquery');
-var PopulateDropDown = React.createClass({
-        getInitialState: function() {
-                return {
-                        data: []
-                };
-        },
+
+const App = () => {
+        return (
+                <div>
+                        <PopulateDropDown />
+                </div>
+        )
+}
+
+class PopulateDropDown extends React.Component {
+        constructor() {
+                super();
+                this.state = { data: null };
+        }
         
-        componentWillMount: function() {
+        // componentDidMount() {
+                 
+        // }
+        
+        fetchCar() {
                 axios.get('https://api.edmunds.com/api/vehicle/v2/makes?fmt=json&api_key=kvytjhenbcuxked2g4r89zm9')
-                        .then(function(res) {
-                                console.log(res);
-                                this.setState({
-                                        data: res.data
-                                });
-                                console.log(res.data);
-                        }).catch(function(error) {
-                                console.log("error", error);
-                        })
-        },
+                  .then(
+                    res => {
+                      return this.setState({
+                        data: res.data.makes
+                      });
+                    },
+                    err => {
+                      console.log(err)
+                    }
+                  );
+          console.log(this.state);
+        }
         
-        //  componentWillMount: function(){
+        render() {
+                console.log({ state: this.state });
+                return (
+                        <div>
+                                <h1>Hello</h1>
+                                <button onClick={() => this.fetchCar()}>Click Me</button>
+                                {this.state.data && (
+                                  this.state.data.map((car, i) => (
+                                    <li key={i}>{car.name}</li>
+                                  ))
+                                )}
+                        </div>
+                );
+        }
+}
+
+// var PopulateDropDown = React.createClass({
+//         getInitialState: function() {
+//                 return {
+//                         data: []
+                        
+//                 };
+//         },
+        
+//         componentDidMount: function() {
+//                 axios.get('https://api.edmunds.com/api/vehicle/v2/makes?fmt=json&api_key=kvytjhenbcuxked2g4r89zm9')
+//                         .then(function(res) {
+//                                 console.log('resss.',res);
+//                                 this.setState({
+//                                         data: res.data.makes
+                                        
+//                                 },function(){
+//                                         console.log(this.state)
+//                                 })
+                                
+//                                 console.log(res.data);
+//                         }).catch(function(error) {
+//                                 console.log("error", error);
+//                         })
+//         },
+        
+//         //  componentWillMount: function(){
                 
                 
         
-        //  $.ajax({
-        //     url: 'https://api.edmunds.com/api/vehicle/v2/makes?fmt=json&api_key=kvytjhenbcuxked2g4r89zm9',
-        //     method: 'GET',
-        //     success: function(result) {
-        //         this.setState({data: result});
-        //         console.log(result);
+//         //  $.ajax({
+//         //     url: 'https://api.edmunds.com/api/vehicle/v2/makes?fmt=json&api_key=kvytjhenbcuxked2g4r89zm9',
+//         //     method: 'GET',
+//         //     success: function(result) {
+//         //         this.setState({data: result});
+//         //         console.log(result);
 
-        //     }.bind(this)
+//         //     }.bind(this)
 
-        // componentWillMount: function() {
+//         // componentWillMount: function() {
 
                 
-        //  });
-        render: function() {
+//         //  });
+//         render: function() {
                 
                         
-                console.log(this.state.data);
-                return (
-                        <div className="car-output">
-                        {this.state.data.makes(function(car, index) {
-                                return (
-                                        <li>{car}</li>
-                                )
-                        })}
-                        </div>
+//                 console.log('state',this.state);
+//                 return (
+//                         <div className="car-output">
+                       
+//                         </div>
                         
                         
                        
 
-                );
+//                 );
 
-        }
+//         }
         
                 
      
                 
         
 
-});
+// });
 
 
 
@@ -220,4 +271,4 @@ var PopulateDropDown = React.createClass({
 // });
 
 
-ReactDOM.render(<PopulateDropDown />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
