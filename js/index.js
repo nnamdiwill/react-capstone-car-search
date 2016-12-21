@@ -46,15 +46,66 @@ class PopulateDropDown extends React.Component {
                         <div>
                                 <h1>Hello</h1>
                                 <button onClick={() => this.fetchCar()}>Click Me</button>
+                                <select id="displayCarMakes" onClick={() => this.fetchModel()}>
                                 {this.state.data && (
                                   this.state.data.map((car, i) => (
-                                    <li key={i}>{car.name}</li>
+                                  <option key={i} value="{i}">{car.name}</option>
                                   ))
                                 )}
+                                </select>
                         </div>
+                        
+                        
                 );
         }
 }
+
+
+
+class PopulateCarResults extends React.Component {
+        constructor() {
+                super();
+                this.state = { data: null };
+        }
+        
+        // componentDidMount() {
+                 
+        // }
+        
+        fetchModel() {
+                axios.get('https://api.edmunds.com/api/vehicle/v2/makes'+ makes +'?fmt=json&api_key=kvytjhenbcuxked2g4r89zm9')
+                  .then(
+                    res => {
+                      return this.setState({
+                        data: res.data.makes
+                      });
+                    },
+                    err => {
+                      console.log(err)
+                    }
+                  );
+          console.log(this.state);
+        }
+        
+        render() {
+                console.log({ state: this.state });
+                return (
+                        <div>
+                                <ul id="displayCarModels">
+                                {this.state.data && (
+                                  this.state.data.map((car, i) => (
+                                  <li key={i} >{car.name}</li>
+                                  ))
+                                )}
+                                </ul>
+                        </div>
+                        
+                        
+                );
+        }
+}
+
+key={i}
 
 // var PopulateDropDown = React.createClass({
 //         getInitialState: function() {
