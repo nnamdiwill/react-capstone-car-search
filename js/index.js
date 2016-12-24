@@ -11,6 +11,7 @@ const App = () => {
         return (
                 <div>
                         <PopulateDropDown />
+                
                 </div>
         )
 }
@@ -18,7 +19,7 @@ const App = () => {
 class PopulateDropDown extends React.Component {
         constructor() {
                 super();
-                this.state = { data: null };
+                this.state = { dataMakes: null, dataModels: null };
         }
         
         // componentDidMount() {
@@ -30,71 +31,50 @@ class PopulateDropDown extends React.Component {
                   .then(
                     res => {
                       return this.setState({
-                        data: res.data.makes
+                        dataMakes: res.data.makes
                       });
                     },
                     err => {
                       console.log(err)
                     }
                   );
-          console.log(this.state);
+          //console.log(this.state);
+        }
+
+        
+         fetchModel(carMake) {
+                axios.get('https://api.edmunds.com/api/vehicle/v2/'+carMake+'/models?fmt=json&api_key=kvytjhenbcuxked2g4r89zm9')
+
+                  .then(
+                    res => {
+                      return this.setState({
+                        dataModels: res.data.models
+                      });
+                    },
+                    err => {
+                      console.log(err)
+                    }
+                  );
+          console.log('car makes: '+this.state);
         }
         
         render() {
-                console.log({ state: this.state });
+                //console.log({ state: this.state });
                 return (
                         <div>
                                 <h1>Hello</h1>
                                 <button onClick={() => this.fetchCar()}>Click Me</button>
-                                <select id="displayCarMakes" onClick={() => this.fetchModel()}>
-                                {this.state.data && (
-                                  this.state.data.map((car, i) => (
-                                  <option key={i} value="{i}">{car.name}</option>
+                                <div id="displayCarMakes" >
+                                {this.state.dataMakes && (
+                                  this.state.dataMakes.map((carMake, i) => (
+                                  <button key={i} value="{i}" onClick={() =>  this.fetchModel(carMake.name)}>{carMake.name}</button>
                                   ))
                                 )}
-                                </select>
-                        </div>
-                        
-                        
-                );
-        }
-}
-
-
-
-class PopulateCarResults extends React.Component {
-        constructor() {
-                super();
-                this.state = { data: null };
-        }
-        
-        // componentDidMount() {
-                 
-        // }
-        
-        fetchModel() {
-                axios.get('https://api.edmunds.com/api/vehicle/v2/makes'+ makes +'?fmt=json&api_key=kvytjhenbcuxked2g4r89zm9')
-                  .then(
-                    res => {
-                      return this.setState({
-                        data: res.data.makes
-                      });
-                    },
-                    err => {
-                      console.log(err)
-                    }
-                  );
-          console.log(this.state);
-        }
-        
-        render() {
-                console.log({ state: this.state });
-                return (
-                        <div>
+                                </div>
                                 <ul id="displayCarModels">
-                                {this.state.data && (
-                                  this.state.data.map((car, i) => (
-                                  <li key={i} >{car.name}</li>
+                                {this.state.dataModels && (
+                                  this.state.dataModels.map((carModel, i) => (
+                                  <li key={i} >{carModel.name}</li>
                                   ))
                                 )}
                                 </ul>
@@ -105,7 +85,53 @@ class PopulateCarResults extends React.Component {
         }
 }
 
-key={i}
+
+
+// class PopulateCarResults extends React.Component {
+//         constructor() {
+//                 super();
+//                 this.state = { data: null };
+//         }
+        
+//         // componentDidMount() {
+                 
+//         // }
+        
+//         fetchModel() {
+//                 axios.get('http://api.edmunds.com/api/vehicle/v2/' + {make}/{model} + '?fmt=json&api_key=kvytjhenbcuxked2g4r89zm9')
+
+//                   .then(
+//                     res => {
+//                       return this.setState({
+//                         data: res.data.makes
+//                       });
+//                     },
+//                     err => {
+//                       console.log(err)
+//                     }
+//                   );
+//           console.log(this.state);
+//         }
+        
+//         render() {
+//                 console.log({ state: this.state });
+//                 return (
+//                         <div>
+//                                 <ul id="displayCarModels">
+//                                 {this.state.data && (
+//                                   this.state.data.map((car, i) => (
+//                                   <li key={i} >{car.name}</li>
+//                                   ))
+//                                 )}
+//                                 </ul>
+//                         </div>
+                        
+                        
+//                 );
+//         }
+// }
+
+//key={i}
 
 // var PopulateDropDown = React.createClass({
 //         getInitialState: function() {
