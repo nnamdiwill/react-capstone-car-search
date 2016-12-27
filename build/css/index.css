@@ -20,6 +20,7 @@ html {
     background-image: url("/images/ferrari");
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: gray;
 }
 
 div {
@@ -36,6 +37,7 @@ h1 {
     font-size: 60px;
     text-align: center;
     color: black;
+    font-style: italic;
 }
 
 h3 {
@@ -61,6 +63,35 @@ p {
     text-align: center;
     color:green;
     font-size: 20px;
+}
+
+#displayCarMakes, #displayCarModels{
+    margin:0 auto;
+    width: 70%;
+}
+
+#displayCarMakes button {
+    width: 18%;
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding: 10px;
+}
+
+#displayCarModels li {
+     width: 30%;
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding: 10px;
+    border: 1px solid red;
+    font-size: medium;
+    color: white;
+    
 }
 
 

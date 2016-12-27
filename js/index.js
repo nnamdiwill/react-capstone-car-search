@@ -22,6 +22,7 @@ class PopulateDropDown extends React.Component {
                 this.state = { dataMakes: null, dataModels: null };
         }
         
+        
         // componentDidMount() {
                  
         // }
@@ -43,7 +44,7 @@ class PopulateDropDown extends React.Component {
 
         
          fetchModel(carMake) {
-                axios.get('https://api.edmunds.com/api/vehicle/v2/'+carMake+'/models?fmt=json&api_key=kvytjhenbcuxked2g4r89zm9')
+                axios.get('https://api.edmunds.com/api/vehicle/v2/'+carMake+'/models?view=full&fmt=json&api_key=kvytjhenbcuxked2g4r89zm9')
 
                   .then(
                     res => {
@@ -60,24 +61,28 @@ class PopulateDropDown extends React.Component {
         
         render() {
                 //console.log({ state: this.state });
+                //   for (var i = 0; i < {carModel.years}.lenght; i++) {
+                                //                 {carModel.years}[i].year;
+                                //             }
                 return (
                         <div>
-                                <h1>Hello</h1>
+                                <h1>Car Makes and Models</h1>
                                 <button onClick={() => this.fetchCar()}>Click Me</button>
                                 <div id="displayCarMakes" >
                                 {this.state.dataMakes && (
                                   this.state.dataMakes.map((carMake, i) => (
-                                  <button key={i} value="{i}" onClick={() =>  this.fetchModel(carMake.name)}>{carMake.name}</button>
+                                  <button key={i} value="{i}" onClick={() =>  this.fetchModel(carMake.name)}>{carMake.name} </button>
                                   ))
                                 )}
                                 </div>
                                 <ul id="displayCarModels">
                                 {this.state.dataModels && (
                                   this.state.dataModels.map((carModel, i) => (
-                                  <li key={i} >{carModel.name}</li>
+                                  <li key={i} >{carModel.name} - {carModel.years} </li>
                                   ))
                                 )}
                                 </ul>
+                                
                         </div>
                         
                         
