@@ -81,6 +81,7 @@ p {
 }
 
 #displayCarModels li {
+    vertical-align: top;
      width: 30%;
     display: inline-block;
     margin-bottom: 10px;
@@ -93,8 +94,23 @@ p {
     color: white;
     
 }
+#displayCarModels > li { 
+    height: 300px;
+    overflow-y: scroll;
+    border-color: black;
+}
+#displayCarModels .carYears, #displayCarModels .carYearsName{
+    width: 100%;
+    display:block;
+}
+#displayCarModels .carYears {
+    border: 1px solid lightgrey; 
+}
 
-
+#displayCarModels .carYearsName {
+    background-color: #bf46bd;
+    border: 0; 
+}
 /*lightbox styling*/
 
 #gallery {

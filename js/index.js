@@ -78,12 +78,41 @@ class PopulateDropDown extends React.Component {
                                 <ul id="displayCarModels">
                                 {this.state.dataModels && (
                                   this.state.dataModels.map((carModel, i) => (
-                                  <li key={i} >{carModel.name} - {carModel.years} </li>
+                                  <li key={i} >
+                                  <h4>{carModel.name}</h4>
+                                  
+                                                <ul>
+                                                  {carModel.years && (
+                                                          carModel.years.map((carModelYears, x) => (
+                                                          <li className ="carYears" key={x} >
+                                                                <h5>{carModelYears.year } </h5>
+                                                          
+                                                          
+                                                           
+                                                                  
+                                                                        <ul>
+                                                                          {carModelYears.styles && (
+                                                                                  carModelYears.styles.map((carModelYearsStyles, y) => (
+                                                                                  <li className="carYearsName" key={y} >{carModelYearsStyles.name } </li>
+                                                                                  ))
+                                                                                )}
+                                                          
+                                                                        </ul>
+                                                          
+                                                          
+                                                          </li>
+                                                          ))
+                                                        )}
+                                  
+                                                </ul>
+                                  
+                                  </li>
                                   ))
                                 )}
                                 </ul>
                                 
                         </div>
+                        
                         
                         
                 );
